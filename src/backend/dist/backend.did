@@ -1,0 +1,108 @@
+type _UnsubscribeSuccess = record {topic_name: opt text;};
+type _UnsubscribeError = record {};
+type _CaffeineEmailUnsubscribeResult = 
+ variant {
+   Err: _UnsubscribeError;
+   Ok: _UnsubscribeSuccess;
+ };
+type _CaffeineEmailUnsubscribeArgs = 
+ record {
+   recipient_email: text;
+   topic_id: nat32;
+ };
+type UserId = principal;
+type Timestamp = int;
+type TickerMessage = 
+ record {
+   id: nat;
+   message: text;
+ };
+type StylePreset = 
+ record {
+   bgColor: text;
+   dotColor: text;
+   id: nat;
+   logoData: opt text;
+   name: text;
+ };
+type QrEntry = 
+ record {
+   compositeImage: opt text;
+   generatedAt: Timestamp;
+   id: nat;
+   notes: text;
+   url: text;
+   userId: UserId;
+ };
+type PaymentRecord = 
+ record {
+   amountE8s: nat;
+   timestamp: Timestamp;
+   userId: UserId;
+ };
+type EmailSignup = 
+ record {
+   email: text;
+   firstName: text;
+   signedUpAt: Timestamp;
+ };
+type DripTemplate = 
+ record {
+   delayDays: nat;
+   htmlBody: text;
+   id: nat;
+   name: text;
+   subject: text;
+   updatedAt: Timestamp;
+   version: nat;
+ };
+type DripEmailLog = 
+ record {
+   sentAt: Timestamp;
+   subscriberEmail: text;
+   templateId: nat;
+   versionSent: nat;
+ };
+type DayStat = 
+ record {
+   count: nat;
+   date: text;
+ };
+service : {
+  _caffeineEmailUnsubscribeFromTopic: (args:
+   _CaffeineEmailUnsubscribeArgs) -> (_CaffeineEmailUnsubscribeResult);
+  addTickerMessage: (message: text) -> (opt TickerMessage);
+  broadcastToSubscribers: (subject: text, body: text) -> (text);
+  claimAdmin: () -> (bool);
+  deleteQrEntry: (entryId: nat) -> (bool);
+  deleteStylePreset: (id: nat) -> (bool);
+  deleteTickerMessage: (id: nat) -> (bool);
+  getAdminPrincipal: () -> (opt principal) query;
+  getAdminStats: () -> (vec DayStat) query;
+  getAnalyticsAccess: () -> (bool) query;
+  getDripEmailLog: () -> (vec DripEmailLog) query;
+  getDripTemplates: () -> (vec DripTemplate) query;
+  getEmailSignups: () -> (vec EmailSignup);
+  getMyClickCounts: () -> (vec record {
+                                 text;
+                                 nat;
+                               }) query;
+  getMyQrEntries: () -> (vec QrEntry);
+  getMyStats: () -> (vec DayStat) query;
+  getPaymentLedger: () -> (vec PaymentRecord) query;
+  getQrForRedirect: (id: text) -> (opt record {url: text;});
+  getStylePresets: () -> (vec StylePreset);
+  getTickerMessages: () -> (vec TickerMessage) query;
+  removeEmailSignup: (email: text) -> (bool);
+  saveQrEntry: (url: text, notes: text, compositeImage: opt text) ->
+   (QrEntry);
+  saveStylePreset: (name: text, dotColor: text, bgColor: text, logoData:
+   opt text) -> (StylePreset);
+  signUpForEmail: (firstName: text, email: text) -> (bool);
+  unlockAnalytics: (blockHeight: nat64) -> (variant {
+                                              err: text;
+                                              ok;
+                                            });
+  updateDripTemplate: (id: nat, subject: text, htmlBody: text) -> (bool);
+  updateTickerMessage: (id: nat, message: text) -> (bool);
+}

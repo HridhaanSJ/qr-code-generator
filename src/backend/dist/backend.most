@@ -1,0 +1,356 @@
+// Version: 3.0.0
+type Data__159895909<T> = {var count : Nat__490723111; elements : [var ?T]};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type DripEmailLog__890594583 =
+  {
+    sentAt : Timestamp__170271093;
+    subscriberEmail : Text;
+    templateId : Nat;
+    versionSent : Nat
+  };
+type DripEmailLog__893661031 = DripEmailLog__890594583;
+type DripTemplate__230583457 =
+  {
+    delayDays : Nat;
+    htmlBody : Text;
+    id : Nat;
+    name : Text;
+    subject : Text;
+    updatedAt : Timestamp__170271093;
+    version : Nat
+  };
+type DripTemplate__524284981 = DripTemplate__230583457;
+type EmailSignup__330343950 = EmailSignup__879806709;
+type EmailSignup__879806709 =
+  {email : Text; firstName : Text; signedUpAt : Timestamp__170271093};
+type Internal__667636161<T> =
+  {children : [var ?Node__92254746<T>]; data : Data__159895909<T>};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__520550824<T> = {data : Data__159895909<T>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Node__92254746<T> =
+  {#internal : Internal__667636161<T>; #leaf : Leaf__520550824<T>};
+type PaymentRecord__260499935 =
+  {
+    amountE8s : Nat;
+    timestamp : Timestamp__532962028;
+    userId : UserId__141337401
+  };
+type QrEntry__484134990 =
+  {
+    compositeImage : ?Text;
+    generatedAt : Timestamp__144199673;
+    id : Nat;
+    notes : Text;
+    url : Text;
+    userId : UserId__914439993
+  };
+type QrEntry__590917628 = QrEntry__484134990;
+type Set__532252804<T> = Set__710576254<T>;
+type Set__710576254<T> =
+  {var root : Node__92254746<T>; var size : Nat__490723111};
+type StylePreset__166307083 = StylePreset__429194202;
+type StylePreset__429194202 =
+  {bgColor : Text; dotColor : Text; id : Nat; logoData : ?Text; name : Text};
+type TickerMessage__41009935 = {id : Nat; message : Text};
+type TickerMessage__743961219 = TickerMessage__41009935;
+type Timestamp__144199673 = Timestamp__301639476;
+type Timestamp__170271093 = Timestamp__301639476;
+type Timestamp__301639476 = Int;
+type Timestamp__532962028 = Timestamp__301639476;
+type TopicRecord__855172700 =
+  {var name : Text; subscribers : Set__532252804<Text>};
+type UserId__141337401 = UserId__158757552;
+type UserId__158757552 = Principal;
+type UserId__914439993 = UserId__158757552;
+actor ({
+  stable var adminPrincipal : ?Principal;
+  stable analyticsPayments :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PaymentRecord__260499935]];
+      var elementIndex : Nat__490723111
+    };
+  stable clickCounts :
+    {var root : Node__46230540<Text, Nat>; var size : Nat__490723111};
+  stable dripEmailLog :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DripEmailLog__893661031]];
+      var elementIndex : Nat__490723111
+    };
+  stable dripTemplates :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DripTemplate__524284981]];
+      var elementIndex : Nat__490723111
+    };
+  in emailSignups : List__415060402<EmailSignup__330343950>;
+  stable ledger :
+    actor {
+      query_blocks :
+        shared query {length : Nat64; start : Nat64} ->
+          async
+            {
+              archived_blocks :
+                [{
+                   callback :
+                     shared query {length : Nat64; start : Nat64} ->
+                       async
+                         {
+                           blocks :
+                             [{
+                                transaction :
+                                  {
+                                    operation :
+                                      ?{
+                                         #Approve :
+                                           {
+                                             allowance_e8s : Int;
+                                             expires_at :
+                                               ?{timestamp_nanos : Nat64};
+                                             fee : {e8s : Nat64};
+                                             from : Blob;
+                                             spender : Blob
+                                           };
+                                         #Burn :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             from : Blob
+                                           };
+                                         #Mint :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             to : Blob
+                                           };
+                                         #Transfer :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             fee : {e8s : Nat64};
+                                             from : Blob;
+                                             to : Blob
+                                           }
+                                       }
+                                  }
+                              }]
+                         };
+                   length : Nat64;
+                   start : Nat64
+                 }];
+              blocks :
+                [{
+                   transaction :
+                     {
+                       operation :
+                         ?{
+                            #Approve :
+                              {
+                                allowance_e8s : Int;
+                                expires_at : ?{timestamp_nanos : Nat64};
+                                fee : {e8s : Nat64};
+                                from : Blob;
+                                spender : Blob
+                              };
+                            #Burn : {amount : {e8s : Nat64}; from : Blob};
+                            #Mint : {amount : {e8s : Nat64}; to : Blob};
+                            #Transfer :
+                              {
+                                amount : {e8s : Nat64};
+                                fee : {e8s : Nat64};
+                                from : Blob;
+                                to : Blob
+                              }
+                          }
+                     }
+                 }];
+              first_block_index : Nat64
+            }
+    };
+  stable var nextEntryId : Nat;
+  stable var nextPresetId : Nat;
+  stable var nextTickerId : Nat;
+  in qrEntries :
+    Map__605269027<UserId__914439993,
+                    List__415060402<{
+                                      compositeImage : ?Text;
+                                      generatedAt : Timestamp__144199673;
+                                      id : Nat;
+                                      notes : Text;
+                                      url : Text;
+                                      userId : UserId__914439993
+                                    }>>;
+  stable stylePresets :
+    {
+      var root :
+        Node__46230540<UserId__914439993,
+                        List__415060402<StylePreset__166307083>>;
+      var size : Nat__490723111
+    };
+  stable subscribers :
+    {
+      var idGen : Nat;
+      topics : Map__605269027<Nat, TopicRecord__855172700>;
+      topicsByName : Map__605269027<Text, Nat>
+    };
+  stable tickerMessages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TickerMessage__743961219]];
+      var elementIndex : Nat__490723111
+    };
+  stable welcomeTopicId : Nat
+}, {
+  stable var adminPrincipal : ?Principal;
+  stable analyticsPayments :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PaymentRecord__260499935]];
+      var elementIndex : Nat__490723111
+    };
+  stable clickCounts :
+    {var root : Node__46230540<Text, Nat>; var size : Nat__490723111};
+  stable dripEmailLog :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DripEmailLog__893661031]];
+      var elementIndex : Nat__490723111
+    };
+  stable dripTemplates :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?DripTemplate__524284981]];
+      var elementIndex : Nat__490723111
+    };
+  stable emailSignups :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?EmailSignup__330343950]];
+      var elementIndex : Nat__490723111
+    };
+  stable ledger :
+    actor {
+      query_blocks :
+        shared query {length : Nat64; start : Nat64} ->
+          async
+            {
+              archived_blocks :
+                [{
+                   callback :
+                     shared query {length : Nat64; start : Nat64} ->
+                       async
+                         {
+                           blocks :
+                             [{
+                                transaction :
+                                  {
+                                    operation :
+                                      ?{
+                                         #Approve :
+                                           {
+                                             allowance_e8s : Int;
+                                             expires_at :
+                                               ?{timestamp_nanos : Nat64};
+                                             fee : {e8s : Nat64};
+                                             from : Blob;
+                                             spender : Blob
+                                           };
+                                         #Burn :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             from : Blob
+                                           };
+                                         #Mint :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             to : Blob
+                                           };
+                                         #Transfer :
+                                           {
+                                             amount : {e8s : Nat64};
+                                             fee : {e8s : Nat64};
+                                             from : Blob;
+                                             to : Blob
+                                           }
+                                       }
+                                  }
+                              }]
+                         };
+                   length : Nat64;
+                   start : Nat64
+                 }];
+              blocks :
+                [{
+                   transaction :
+                     {
+                       operation :
+                         ?{
+                            #Approve :
+                              {
+                                allowance_e8s : Int;
+                                expires_at : ?{timestamp_nanos : Nat64};
+                                fee : {e8s : Nat64};
+                                from : Blob;
+                                spender : Blob
+                              };
+                            #Burn : {amount : {e8s : Nat64}; from : Blob};
+                            #Mint : {amount : {e8s : Nat64}; to : Blob};
+                            #Transfer :
+                              {
+                                amount : {e8s : Nat64};
+                                fee : {e8s : Nat64};
+                                from : Blob;
+                                to : Blob
+                              }
+                          }
+                     }
+                 }];
+              first_block_index : Nat64
+            }
+    };
+  stable var nextEntryId : Nat;
+  stable var nextPresetId : Nat;
+  stable var nextTickerId : Nat;
+  stable qrEntries :
+    {
+      var root :
+        Node__46230540<UserId__914439993, List__415060402<QrEntry__590917628>>;
+      var size : Nat__490723111
+    };
+  stable stylePresets :
+    {
+      var root :
+        Node__46230540<UserId__914439993,
+                        List__415060402<StylePreset__166307083>>;
+      var size : Nat__490723111
+    };
+  stable subscribers :
+    {
+      var idGen : Nat;
+      topics : Map__605269027<Nat, TopicRecord__855172700>;
+      topicsByName : Map__605269027<Text, Nat>
+    };
+  stable tickerMessages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TickerMessage__743961219]];
+      var elementIndex : Nat__490723111
+    };
+  stable welcomeTopicId : Nat
+}) ;

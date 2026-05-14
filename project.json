@@ -1,0 +1,23 @@
+{
+  "overview": "A QR code generator with shareable tracking links. Users sign in to create and customize QR codes, then share them as unique URLs that redirect visitors and count every click. Analytics are unlocked with a one-time 0.5 ICP payment, giving lifetime access to click counts per code. Admin area tracks all payments and ICP collected.",
+  "features": [
+    "Shareable QR code links with immediate redirect and click tracking",
+    "One-time 0.5 ICP paywall for lifetime analytics access",
+    "Click count per QR code shown on the My QRs page",
+    "Admin payment reporting: who paid, when, how much, and running total",
+    "QR code customization with colors and logos",
+    "Style presets, batch ZIP download, and URL search",
+    "Dark mode toggle",
+    "Email subscriber management with drip sequences"
+  ],
+  "category": "productivity",
+  "tags": [
+    "qr-code",
+    "analytics",
+    "icp-payment",
+    "click-tracking",
+    "marketing",
+    "shareable-links"
+  ],
+  "last_updated": "2026-04-28T18:15:46.985Z"
+}
