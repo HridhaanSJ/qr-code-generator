@@ -1,4 +1,5 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, T as Slot, i as cn, U as cva, r as reactExports, V as React, W as composeRefs, Y as reactDomExports, h as useComposedRefs, u as useInternetIdentity, z as useAdminPrincipal } from "./index-olMt066N.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, r as reactExports, C as React, D as reactDomExports, h as useInternetIdentity, t as useAdminPrincipal } from "./index-DVsu3fCU.js";
+import { S as Slot, c as cn, h as cva, i as composeRefs, e as useComposedRefs } from "./index-B9WKP9j2.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -483,9 +484,6 @@ function useIsAdmin() {
   const isAdmin = principalStr === adminPrincipal;
   return { isAdmin, isLoading: false };
 }
-function toDate(nanos) {
-  return new Date(Number(nanos / BigInt(1e6)));
-}
 export {
   Badge as B,
   ChartNoAxesColumn as C,
@@ -501,6 +499,5 @@ export {
   createSlot as h,
   createContext2 as i,
   useIsAdmin as j,
-  toDate as t,
   useCallbackRef as u
 };

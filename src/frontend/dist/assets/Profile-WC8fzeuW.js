@@ -1,7 +1,19 @@
-import { c as createLucideIcon, r as reactExports, h as useComposedRefs, j as jsxRuntimeExports, R as ReactDOM, X, i as cn, k as getDefaultExportFromCjs, l as commonjsGlobal, u as useInternetIdentity, N as Navigate, m as useMyQrEntries, n as useGetAnalyticsAccess, o as useGetMyClickCounts, p as useDeleteQrEntry, q as useNavigate, a as useSearch, B as Button, Q as QrCode, s as Link, t as useUnlockAnalytics, v as loadConfig } from "./index-olMt066N.js";
-import { u as useCallbackRef$1, P as Primitive, c as composeEventHandlers, d as dispatchDiscreteCustomEvent, a as useLayoutEffect2, b as useControllableState, e as useId, f as Presence, g as createContextScope, h as createSlot, i as createContext2, j as useIsAdmin, B as Badge, C as ChartNoAxesColumn, S as Skeleton, t as toDate$1 } from "./index-CrztvFUQ.js";
-import { I as Input, u as ue, C as Card, c as CardContent, T as Trash2 } from "./index-BMPdD8Rk.js";
-import { a as Lock, Q as QRCodeCanvas, D as Download, S as Share2, L as Label } from "./index-DXG_wgtH.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, R as ReactDOM, X, g as getDefaultExportFromCjs, f as commonjsGlobal, h as useInternetIdentity, N as Navigate, i as useMyQrEntries, k as useGetAnalyticsAccess, l as useGetMyClickCounts, m as useDeleteQrEntry, n as useNavigate, u as useSearch, Q as QrCode, L as Link, o as useUnlockAnalytics, p as loadConfig } from "./index-DVsu3fCU.js";
+import { u as useCallbackRef$1, P as Primitive, c as composeEventHandlers, d as dispatchDiscreteCustomEvent, a as useLayoutEffect2, b as useControllableState, e as useId, f as Presence, g as createContextScope, h as createSlot, i as createContext2, j as useIsAdmin, B as Badge, C as ChartNoAxesColumn, S as Skeleton } from "./useIsAdmin-DPA6oSGT.js";
+import { e as useComposedRefs, c as cn, B as Button, I as Input, u as ue, C as Card, d as CardContent, T as Trash2 } from "./index-B9WKP9j2.js";
+import { Q as QRCodeCanvas, D as Download, S as Share2, L as Label } from "./index-BQ0ttfLU.js";
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$9 = [
+  ["rect", { width: "20", height: "5", x: "2", y: "3", rx: "1", key: "1wp1u1" }],
+  ["path", { d: "M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8", key: "1s80jp" }],
+  ["path", { d: "M10 12h4", key: "a56b0p" }]
+];
+const Archive = createLucideIcon("archive", __iconNode$9);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -9,32 +21,31 @@ import { a as Lock, Q as QRCodeCanvas, D as Download, S as Share2, L as Label } 
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["rect", { width: "20", height: "5", x: "2", y: "3", rx: "1", key: "1wp1u1" }],
-  ["path", { d: "M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8", key: "1s80jp" }],
-  ["path", { d: "M10 12h4", key: "a56b0p" }]
-];
-const Archive = createLucideIcon("archive", __iconNode$8);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$7 = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const Calendar = createLucideIcon("calendar", __iconNode$7);
+const Calendar = createLucideIcon("calendar", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$6 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$6);
+const __iconNode$7 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$7);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$6 = [
+  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
+  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+];
+const Copy = createLucideIcon("copy", __iconNode$6);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -42,10 +53,11 @@ const Check = createLucideIcon("check", __iconNode$6);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$5 = [
-  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
-  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+  ["path", { d: "M10 14 21 3", key: "gplh6r" }],
+  ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
 ];
-const Copy = createLucideIcon("copy", __iconNode$5);
+const ExternalLink = createLucideIcon("external-link", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -53,11 +65,13 @@ const Copy = createLucideIcon("copy", __iconNode$5);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$4 = [
-  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
-  ["path", { d: "M10 14 21 3", key: "gplh6r" }],
-  ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
 ];
-const ExternalLink = createLucideIcon("external-link", __iconNode$4);
+const FileText = createLucideIcon("file-text", __iconNode$4);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -65,13 +79,10 @@ const ExternalLink = createLucideIcon("external-link", __iconNode$4);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$3 = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
 ];
-const FileText = createLucideIcon("file-text", __iconNode$3);
+const LockOpen = createLucideIcon("lock-open", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -80,9 +91,9 @@ const FileText = createLucideIcon("file-text", __iconNode$3);
  */
 const __iconNode$2 = [
   ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
+  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
 ];
-const LockOpen = createLucideIcon("lock-open", __iconNode$2);
+const Lock = createLucideIcon("lock", __iconNode$2);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -1756,7 +1767,7 @@ function DialogDescription({
     }
   );
 }
-function toDate(argument) {
+function toDate$1(argument) {
   const argStr = Object.prototype.toString.call(argument);
   if (argument instanceof Date || typeof argument === "object" && argStr === "[object Date]") {
     return new argument.constructor(+argument);
@@ -1783,7 +1794,7 @@ function startOfWeek(date, options) {
   var _a, _b, _c, _d;
   const defaultOptions2 = getDefaultOptions();
   const weekStartsOn = (options == null ? void 0 : options.weekStartsOn) ?? ((_b = (_a = options == null ? void 0 : options.locale) == null ? void 0 : _a.options) == null ? void 0 : _b.weekStartsOn) ?? defaultOptions2.weekStartsOn ?? ((_d = (_c = defaultOptions2.locale) == null ? void 0 : _c.options) == null ? void 0 : _d.weekStartsOn) ?? 0;
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const day = _date.getDay();
   const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
   _date.setDate(_date.getDate() - diff);
@@ -1794,7 +1805,7 @@ function startOfISOWeek(date) {
   return startOfWeek(date, { weekStartsOn: 1 });
 }
 function getISOWeekYear(date) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const year = _date.getFullYear();
   const fourthOfJanuaryOfNextYear = constructFrom(date, 0);
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
@@ -1813,12 +1824,12 @@ function getISOWeekYear(date) {
   }
 }
 function startOfDay(date) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   _date.setHours(0, 0, 0, 0);
   return _date;
 }
 function getTimezoneOffsetInMilliseconds(date) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const utcDate = new Date(
     Date.UTC(
       _date.getFullYear(),
@@ -1854,11 +1865,11 @@ function isValid(date) {
   if (!isDate(date) && typeof date !== "number") {
     return false;
   }
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   return !isNaN(Number(_date));
 }
 function startOfYear(date) {
-  const cleanDate = toDate(date);
+  const cleanDate = toDate$1(date);
   const _date = constructFrom(date, 0);
   _date.setFullYear(cleanDate.getFullYear(), 0, 1);
   _date.setHours(0, 0, 0, 0);
@@ -2354,19 +2365,19 @@ const enUS = {
   }
 };
 function getDayOfYear(date) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const diff = differenceInCalendarDays(_date, startOfYear(_date));
   const dayOfYear = diff + 1;
   return dayOfYear;
 }
 function getISOWeek(date) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const diff = +startOfISOWeek(_date) - +startOfISOWeekYear(_date);
   return Math.round(diff / millisecondsInWeek) + 1;
 }
 function getWeekYear(date, options) {
   var _a, _b, _c, _d;
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const year = _date.getFullYear();
   const defaultOptions2 = getDefaultOptions();
   const firstWeekContainsDate = (options == null ? void 0 : options.firstWeekContainsDate) ?? ((_b = (_a = options == null ? void 0 : options.locale) == null ? void 0 : _a.options) == null ? void 0 : _b.firstWeekContainsDate) ?? defaultOptions2.firstWeekContainsDate ?? ((_d = (_c = defaultOptions2.locale) == null ? void 0 : _c.options) == null ? void 0 : _d.firstWeekContainsDate) ?? 1;
@@ -2398,7 +2409,7 @@ function startOfWeekYear(date, options) {
   return _date;
 }
 function getWeek(date, options) {
-  const _date = toDate(date);
+  const _date = toDate$1(date);
   const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
   return Math.round(diff / millisecondsInWeek) + 1;
 }
@@ -3124,7 +3135,7 @@ function format(date, formatStr, options) {
   const locale = defaultOptions2.locale ?? enUS;
   const firstWeekContainsDate = defaultOptions2.firstWeekContainsDate ?? ((_b = (_a = defaultOptions2.locale) == null ? void 0 : _a.options) == null ? void 0 : _b.firstWeekContainsDate) ?? 1;
   const weekStartsOn = defaultOptions2.weekStartsOn ?? ((_d = (_c = defaultOptions2.locale) == null ? void 0 : _c.options) == null ? void 0 : _d.weekStartsOn) ?? 0;
-  const originalDate = toDate(date);
+  const originalDate = toDate$1(date);
   if (!isValid(originalDate)) {
     throw new RangeError("Invalid time value");
   }
@@ -5522,6 +5533,9 @@ function ProtectedRoute({
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children });
 }
+function toDate(nanos) {
+  return new Date(Number(nanos / BigInt(1e6)));
+}
 const QR_SIZE = 220;
 const PADDING = 24;
 const TEXT_FONT_SIZE = 13;
@@ -5778,7 +5792,7 @@ function QrEntryCard({
     }
   };
   const displayUrl = url.length > 48 ? `${url.slice(0, 45)}…` : url;
-  const formattedDate = format(toDate$1(generatedAt), "MMM d, yyyy • h:mm a");
+  const formattedDate = format(toDate(generatedAt), "MMM d, yyyy • h:mm a");
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Card,
     {

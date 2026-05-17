@@ -11,7 +11,7 @@ const mockDripTemplates: BackendDripTemplate[] = [
     id: BigInt(1),
     name: "Welcome",
     delayDays: BigInt(0),
-    subject: "Welcome to QRGen!",
+    subject: "Welcome to QRify!",
     htmlBody: "<p>Hi {{firstName}},</p><p>Welcome! <a href=\"{{UNSUBSCRIBE_URL}}\">Unsubscribe</a></p>",
     version: BigInt(1),
     updatedAt: BigInt(Date.now()) * BigInt(1_000_000),
@@ -20,7 +20,7 @@ const mockDripTemplates: BackendDripTemplate[] = [
     id: BigInt(2),
     name: "Update 1",
     delayDays: BigInt(10),
-    subject: "Getting started with QRGen",
+    subject: "Getting started with QRify",
     htmlBody: "<p>Hi {{firstName}},</p><p>Here are some tips. <a href=\"{{UNSUBSCRIBE_URL}}\">Unsubscribe</a></p>",
     version: BigInt(1),
     updatedAt: BigInt(Date.now()) * BigInt(1_000_000),
@@ -29,7 +29,7 @@ const mockDripTemplates: BackendDripTemplate[] = [
     id: BigInt(3),
     name: "Update 2",
     delayDays: BigInt(30),
-    subject: "New features in QRGen",
+    subject: "New features in QRify",
     htmlBody: "<p>Hi {{firstName}},</p><p>Check out what's new. <a href=\"{{UNSUBSCRIBE_URL}}\">Unsubscribe</a></p>",
     version: BigInt(1),
     updatedAt: BigInt(Date.now()) * BigInt(1_000_000),
@@ -38,7 +38,7 @@ const mockDripTemplates: BackendDripTemplate[] = [
     id: BigInt(4),
     name: "Update 3",
     delayDays: BigInt(40),
-    subject: "Make the most of QRGen",
+    subject: "Make the most of QRify",
     htmlBody: "<p>Hi {{firstName}},</p><p>Advanced tips inside. <a href=\"{{UNSUBSCRIBE_URL}}\">Unsubscribe</a></p>",
     version: BigInt(1),
     updatedAt: BigInt(Date.now()) * BigInt(1_000_000),
@@ -63,7 +63,7 @@ const mockQrEntries = [
 ];
 
 const mockTickerMessages = [
-  { id: BigInt(1), message: "Welcome to QRGen — create and manage QR codes instantly!" },
+  { id: BigInt(1), message: "Welcome to QRify — create and manage QR codes instantly!" },
   { id: BigInt(2), message: "Generate QR codes in seconds. No limits. No fuss." },
 ];
 

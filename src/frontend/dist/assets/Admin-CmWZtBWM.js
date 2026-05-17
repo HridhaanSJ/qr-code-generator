@@ -1,49 +1,7 @@
-import { c as createLucideIcon, w as React, h as useComposedRefs, j as jsxRuntimeExports, r as reactExports, i as cn, l as commonjsGlobal, k as getDefaultExportFromCjs, x as clsx, y as invariant, u as useInternetIdentity, z as useAdminPrincipal, B as Button, A as useClaimAdmin, C as useEmailSignups, D as useTickerMessages, E as useGetAdminStats, F as useGetPaymentLedger, S as ShieldCheck, G as useAddTickerMessage, H as useUpdateTickerMessage, I as useDeleteTickerMessage, J as useRemoveEmailSignup, K as useBroadcastToSubscribers, M as useGetDripTemplates, O as useUpdateDripTemplate, X } from "./index-olMt066N.js";
-import { g as createContextScope, h as createSlot, e as useId, P as Primitive, c as composeEventHandlers, b as useControllableState, u as useCallbackRef, f as Presence, j as useIsAdmin, C as ChartNoAxesColumn, S as Skeleton, B as Badge, t as toDate } from "./index-CrztvFUQ.js";
-import { C as Card, c as CardContent, u as ue, a as CardHeader, b as CardTitle, I as Input, T as Trash2 } from "./index-BMPdD8Rk.js";
-import { C as CircleAlert, a as CircleCheck, T as Textarea } from "./textarea-uTn-pIXb.js";
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$9 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m15 9-6 6", key: "1uzhvr" }],
-  ["path", { d: "m9 9 6 6", key: "z0biqf" }]
-];
-const CircleX = createLucideIcon("circle-x", __iconNode$9);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$8 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
-];
-const Clock = createLucideIcon("clock", __iconNode$8);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$7 = [
-  ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
-  ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
-];
-const CreditCard = createLucideIcon("credit-card", __iconNode$7);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$6 = [["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]];
-const LoaderCircle = createLucideIcon("loader-circle", __iconNode$6);
+import { c as createLucideIcon, q as React, j as jsxRuntimeExports, r as reactExports, f as commonjsGlobal, g as getDefaultExportFromCjs, s as invariant, t as useAdminPrincipal, v as useClaimAdmin, w as useTickerMessages, x as useGetAdminStats, y as useGetPaymentLedger, z as useAddTickerMessage, A as useUpdateTickerMessage, B as useDeleteTickerMessage } from "./index-DVsu3fCU.js";
+import { g as createContextScope, h as createSlot, e as useId, P as Primitive, c as composeEventHandlers, b as useControllableState, u as useCallbackRef, f as Presence, j as useIsAdmin, C as ChartNoAxesColumn, S as Skeleton, B as Badge } from "./useIsAdmin-DPA6oSGT.js";
+import { e as useComposedRefs, c as cn, g as clsx, C as Card, d as CardContent, B as Button, u as ue, a as CardHeader, b as CardTitle, I as Input, T as Trash2 } from "./index-B9WKP9j2.js";
+import { C as CircleAlert } from "./circle-alert-D5HGdMb-.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -51,10 +9,10 @@ const LoaderCircle = createLucideIcon("loader-circle", __iconNode$6);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$5 = [
-  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
-  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
+  ["rect", { width: "20", height: "14", x: "2", y: "5", rx: "2", key: "ynyp8z" }],
+  ["line", { x1: "2", x2: "22", y1: "10", y2: "10", key: "1b3vmo" }]
 ];
-const Mail = createLucideIcon("mail", __iconNode$5);
+const CreditCard = createLucideIcon("credit-card", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -103,13 +61,14 @@ const __iconNode$1 = [
   [
     "path",
     {
-      d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
-      key: "1ffxy3"
+      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+      key: "oel41y"
     }
   ],
-  ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
+  ["path", { d: "M12 8v4", key: "1got3b" }],
+  ["path", { d: "M12 16h.01", key: "1drbdi" }]
 ];
-const Send = createLucideIcon("send", __iconNode$1);
+const ShieldAlert = createLucideIcon("shield-alert", __iconNode$1);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -124,10 +83,9 @@ const __iconNode = [
       key: "oel41y"
     }
   ],
-  ["path", { d: "M12 8v4", key: "1got3b" }],
-  ["path", { d: "M12 16h.01", key: "1drbdi" }]
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const ShieldAlert = createLucideIcon("shield-alert", __iconNode);
+const ShieldCheck = createLucideIcon("shield-check", __iconNode);
 function createCollection(name) {
   const PROVIDER_NAME = name + "CollectionProvider";
   const [createCollectionContext, createCollectionScope2] = createContextScope(PROVIDER_NAME);
@@ -21667,25 +21625,6 @@ var BarChart = generateCategoricalChart({
 });
 const MAX_TICKER = 5;
 const MAX_TICKER_CHARS = 150;
-function LoginGate() {
-  const { login } = useInternetIdentity();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 flex items-center justify-center py-24", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "max-w-sm w-full text-center shadow-lg border-border", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "pt-10 pb-10 flex flex-col items-center gap-5", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldAlert, { className: "w-7 h-7 text-primary" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-display font-bold text-foreground", children: "Admin Access Required" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "Sign in with Internet Identity to continue." })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Button,
-      {
-        className: "w-full",
-        onClick: () => login(),
-        "data-ocid": "admin-login-btn",
-        children: "Sign In"
-      }
-    )
-  ] }) }) });
-}
 function ClaimAdminGate({ adminPrincipal }) {
   const claimAdmin = useClaimAdmin();
   async function handleClaim() {
@@ -21904,515 +21843,6 @@ function TickerPanel() {
       },
       m2.id.toString()
     )) })
-  ] });
-}
-function EmailSignupsPanel() {
-  const { data: signups = [], isLoading } = useEmailSignups();
-  const removeSignup = useRemoveEmailSignup();
-  const [confirmEmail, setConfirmEmail] = reactExports.useState(null);
-  async function handleDelete(email) {
-    try {
-      await removeSignup.mutateAsync(email);
-      setConfirmEmail(null);
-      ue.success("Subscriber removed.");
-    } catch {
-      ue.error("Failed to remove subscriber.");
-    }
-  }
-  if (isLoading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-10 w-full rounded-lg" }),
-      [1, 2, 3, 4].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-12 w-full rounded-lg" }, i))
-    ] });
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-border bg-card shadow-sm overflow-hidden", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "bg-primary/5 border-b border-border pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardTitle, { className: "text-base font-display font-semibold flex items-center gap-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-4 h-4 text-primary" }),
-      "Email Subscribers",
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "ml-auto bg-primary text-primary-foreground text-xs", children: [
-        signups.length,
-        " ",
-        signups.length === 1 ? "subscriber" : "subscribers"
-      ] })
-    ] }) }),
-    signups.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "py-16 flex flex-col items-center gap-3 text-muted-foreground", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-10 h-10 opacity-30" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm", "data-ocid": "signups-empty-state", children: "No email signups yet." })
-    ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "overflow-x-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("table", { className: "w-full text-sm", "data-ocid": "signups-table", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("thead", { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { className: "bg-primary/10 border-b border-border", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("th", { className: "text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide", children: "First Name" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("th", { className: "text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide", children: "Email Address" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("th", { className: "text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide", children: "Signed Up" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("th", { className: "text-right px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide", children: "Actions" })
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("tbody", { children: signups.map((s2, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "tr",
-        {
-          className: idx % 2 === 0 ? "bg-card" : "bg-muted/30",
-          "data-ocid": `signup-row-${idx + 1}`,
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: "px-4 py-3 text-foreground text-xs font-medium", children: s2.firstName }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: "px-4 py-3 text-foreground font-mono text-xs", children: s2.email }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: "px-4 py-3 text-muted-foreground text-xs", children: toDate(s2.signedUpAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric"
-            }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: "px-4 py-3 text-right", children: confirmEmail === s2.email ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-end gap-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground", children: "Remove?" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  size: "sm",
-                  variant: "destructive",
-                  className: "h-7 px-2 text-xs",
-                  onClick: () => handleDelete(s2.email),
-                  disabled: removeSignup.isPending,
-                  "data-ocid": `signup-confirm-delete-${idx + 1}`,
-                  children: "Yes"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  size: "sm",
-                  variant: "outline",
-                  className: "h-7 px-2 text-xs",
-                  onClick: () => setConfirmEmail(null),
-                  "data-ocid": `signup-cancel-delete-${idx + 1}`,
-                  children: "Cancel"
-                }
-              )
-            ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Button,
-              {
-                size: "icon",
-                variant: "ghost",
-                className: "h-7 w-7 text-muted-foreground hover:text-destructive",
-                onClick: () => setConfirmEmail(s2.email),
-                "aria-label": `Remove ${s2.email}`,
-                "data-ocid": `signup-delete-btn-${idx + 1}`,
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { className: "w-3.5 h-3.5" })
-              }
-            ) })
-          ]
-        },
-        s2.email
-      )) })
-    ] }) })
-  ] }) });
-}
-function BroadcastPanel({ subscriberCount }) {
-  const broadcast = useBroadcastToSubscribers();
-  const [subject, setSubject] = reactExports.useState("");
-  const [body, setBody] = reactExports.useState("");
-  const [result, setResult] = reactExports.useState(null);
-  async function handleSend() {
-    if (!subject.trim() || !body.trim()) return;
-    setResult(null);
-    try {
-      const count = await broadcast.mutateAsync({
-        subject: subject.trim(),
-        body: body.trim()
-      });
-      setResult({ type: "success", count });
-      setSubject("");
-      setBody("");
-      ue.success(
-        `Broadcast sent to ${count} subscriber${count === 1 ? "" : "s"}!`
-      );
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Broadcast failed.";
-      setResult({ type: "error", message: msg });
-      ue.error(msg);
-    }
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border-border bg-card shadow-sm overflow-hidden", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "bg-primary/5 border-b border-border pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardTitle, { className: "text-base font-display font-semibold flex items-center gap-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { className: "w-4 h-4 text-primary" }),
-      "Send to All Subscribers",
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Badge, { className: "ml-auto bg-primary text-primary-foreground text-xs", children: [
-        subscriberCount,
-        " ",
-        subscriberCount === 1 ? "recipient" : "recipients"
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "pt-5 space-y-4", children: [
-      subscriberCount === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "flex items-center gap-2 rounded-lg bg-muted/50 border border-border px-4 py-3 text-sm text-muted-foreground",
-          "data-ocid": "broadcast-no-subscribers",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-4 h-4 shrink-0" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "No subscribers yet. The form is ready for when people sign up." })
-          ]
-        }
-      ),
-      (result == null ? void 0 : result.type) === "success" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "flex items-center gap-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-400",
-          "data-ocid": "broadcast-success-state",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-4 h-4 shrink-0" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-              "Sent to ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: result.count }),
-              " subscriber",
-              result.count === 1 ? "" : "s",
-              "!"
-            ] })
-          ]
-        }
-      ),
-      (result == null ? void 0 : result.type) === "error" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/30 px-4 py-3 text-sm text-destructive",
-          "data-ocid": "broadcast-error-state",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(CircleX, { className: "w-4 h-4 shrink-0" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: result.message })
-          ]
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "label",
-          {
-            htmlFor: "broadcast-subject",
-            className: "text-xs font-medium text-foreground uppercase tracking-wide",
-            children: "Subject"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Input,
-          {
-            id: "broadcast-subject",
-            placeholder: "e.g. Welcome to QRGen updates!",
-            value: subject,
-            onChange: (e3) => {
-              setSubject(e3.target.value);
-              setResult(null);
-            },
-            disabled: broadcast.isPending,
-            "data-ocid": "broadcast-subject-input"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "label",
-          {
-            htmlFor: "broadcast-body",
-            className: "text-xs font-medium text-foreground uppercase tracking-wide",
-            children: "Message"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Textarea,
-          {
-            id: "broadcast-body",
-            placeholder: "Write your message to subscribers here…",
-            rows: 6,
-            value: body,
-            onChange: (e3) => {
-              setBody(e3.target.value);
-              setResult(null);
-            },
-            disabled: broadcast.isPending,
-            className: "resize-y min-h-[96px]",
-            "data-ocid": "broadcast-body-textarea"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Button,
-        {
-          onClick: handleSend,
-          disabled: broadcast.isPending || !subject.trim() || !body.trim() || subscriberCount === 0,
-          className: "w-full sm:w-auto",
-          "data-ocid": "broadcast-send-button",
-          children: broadcast.isPending ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "w-4 h-4 mr-2 animate-spin" }),
-            "Sending…"
-          ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { className: "w-4 h-4 mr-2" }),
-            "Send to All Subscribers"
-          ] })
-        }
-      )
-    ] })
-  ] }) });
-}
-const DRIP_DELAY_LABELS = {
-  0: "Sent immediately",
-  10: "Sent 10 days after signup",
-  30: "Sent 30 days after signup",
-  40: "Sent 40 days after signup"
-};
-function DripEditModal({ template, onClose, onSaved }) {
-  const updateTemplate = useUpdateDripTemplate();
-  const [subject, setSubject] = reactExports.useState(template.subject);
-  const [htmlBody, setHtmlBody] = reactExports.useState(template.htmlBody);
-  const [saveResult, setSaveResult] = reactExports.useState(null);
-  async function handleSave() {
-    if (!subject.trim() || !htmlBody.trim()) return;
-    setSaveResult(null);
-    try {
-      await updateTemplate.mutateAsync({
-        id: template.id,
-        subject: subject.trim(),
-        htmlBody: htmlBody.trim()
-      });
-      setSaveResult({ type: "success" });
-      ue.success("Template saved.");
-      onSaved();
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Failed to save.";
-      setSaveResult({ type: "error", message: msg });
-      ue.error(msg);
-    }
-  }
-  const delayLabel = DRIP_DELAY_LABELS[Number(template.delayDays)] ?? `Sent ${template.delayDays} days after signup`;
-  return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "dialog",
-      {
-        open: true,
-        className: "fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4 m-0 max-w-none max-h-none w-full h-full border-0 bg-transparent",
-        "data-ocid": "drip-edit-dialog",
-        onClick: (e3) => e3.target === e3.currentTarget && onClose(),
-        onKeyDown: (e3) => e3.key === "Escape" && onClose(),
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card border border-border rounded-xl shadow-xl w-full max-w-lg flex flex-col gap-0 overflow-hidden", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 bg-primary/5 border-b border-border px-5 py-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display font-bold text-foreground text-base truncate", children: [
-                "Edit — ",
-                template.name
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground mt-0.5 flex items-center gap-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-3 h-3" }),
-                delayLabel,
-                "  ·  v",
-                template.version.toString()
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                type: "button",
-                onClick: onClose,
-                className: "h-8 w-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors",
-                "aria-label": "Close",
-                "data-ocid": "drip-edit-close-button",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "w-4 h-4" })
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 py-5 space-y-4 overflow-y-auto max-h-[60vh]", children: [
-            (saveResult == null ? void 0 : saveResult.type) === "success" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: "flex items-center gap-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-3 py-2.5 text-sm text-emerald-700 dark:text-emerald-400",
-                "data-ocid": "drip-edit-success-state",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "w-4 h-4 shrink-0" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Template saved! Changes apply to future subscribers." })
-                ]
-              }
-            ),
-            (saveResult == null ? void 0 : saveResult.type) === "error" && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: "flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2.5 text-sm text-destructive",
-                "data-ocid": "drip-edit-error-state",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(CircleX, { className: "w-4 h-4 shrink-0" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: saveResult.message })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "label",
-                {
-                  htmlFor: "drip-subject",
-                  className: "text-xs font-medium text-foreground uppercase tracking-wide",
-                  children: "Subject"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "input",
-                {
-                  id: "drip-subject",
-                  type: "text",
-                  className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                  placeholder: "Email subject line…",
-                  value: subject,
-                  onChange: (e3) => {
-                    setSubject(e3.target.value);
-                    setSaveResult(null);
-                  },
-                  disabled: updateTemplate.isPending,
-                  "data-ocid": "drip-subject-input"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "label",
-                {
-                  htmlFor: "drip-htmlbody",
-                  className: "text-xs font-medium text-foreground uppercase tracking-wide",
-                  children: "HTML Body"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Textarea,
-                {
-                  id: "drip-htmlbody",
-                  rows: 10,
-                  className: "resize-y min-h-[160px] font-mono text-xs",
-                  placeholder: "Write your HTML email body here…",
-                  value: htmlBody,
-                  onChange: (e3) => {
-                    setHtmlBody(e3.target.value);
-                    setSaveResult(null);
-                  },
-                  disabled: updateTemplate.isPending,
-                  "data-ocid": "drip-htmlbody-textarea"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground", children: [
-                "Supported placeholders:",
-                " ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("code", { className: "bg-muted px-1 py-0.5 rounded text-xs font-mono", children: "{{firstName}}" }),
-                " ",
-                "and",
-                " ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("code", { className: "bg-muted px-1 py-0.5 rounded text-xs font-mono", children: "{{UNSUBSCRIBE_URL}}" }),
-                " ",
-                "(required)."
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-end gap-2 px-5 py-4 bg-muted/30 border-t border-border", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Button,
-              {
-                variant: "outline",
-                size: "sm",
-                onClick: onClose,
-                "data-ocid": "drip-edit-cancel-button",
-                children: "Cancel"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Button,
-              {
-                size: "sm",
-                onClick: handleSave,
-                disabled: updateTemplate.isPending || !subject.trim() || !htmlBody.trim(),
-                "data-ocid": "drip-edit-save-button",
-                children: updateTemplate.isPending ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "w-3.5 h-3.5 mr-1.5 animate-spin" }),
-                  "Saving…"
-                ] }) : "Save Changes"
-              }
-            )
-          ] })
-        ] })
-      }
-    )
-  );
-}
-function DripEmailsPanel() {
-  const { data: templates = [], isLoading } = useGetDripTemplates();
-  const [editingTemplate, setEditingTemplate] = reactExports.useState(
-    null
-  );
-  if (isLoading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", children: [1, 2, 3, 4].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-20 w-full rounded-lg" }, i)) });
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 rounded-lg bg-primary/5 border border-primary/20 px-4 py-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-4 h-4 text-primary shrink-0 mt-0.5" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground leading-relaxed", children: "These templates are sent automatically at the scheduled delay. Edits apply only to future subscribers — existing subscribers receive the version that was active when they signed up." })
-    ] }),
-    templates.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "div",
-      {
-        className: "flex flex-col items-center justify-center py-16 gap-3 text-muted-foreground",
-        "data-ocid": "drip-empty-state",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-10 h-10 opacity-30" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm", children: "No drip templates found." })
-        ]
-      }
-    ) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", "data-ocid": "drip-templates-list", children: templates.map((t2, idx) => {
-      const delayLabel = DRIP_DELAY_LABELS[Number(t2.delayDays)] ?? `Sent ${t2.delayDays} days after signup`;
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Card,
-        {
-          className: "border-border bg-card shadow-sm",
-          "data-ocid": `drip-template-item.${idx + 1}`,
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "py-4 px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0 space-y-1", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 flex-wrap", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display font-semibold text-foreground text-sm", children: t2.name }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  Badge,
-                  {
-                    variant: "outline",
-                    className: "text-xs shrink-0",
-                    "data-ocid": `drip-version-badge.${idx + 1}`,
-                    children: [
-                      "v",
-                      t2.version.toString()
-                    ]
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground flex items-center gap-1", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-3 h-3 shrink-0" }),
-                delayLabel
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-foreground/70 truncate", children: [
-                "Subject:",
-                " ",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-foreground", children: t2.subject })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              Button,
-              {
-                size: "sm",
-                variant: "outline",
-                className: "shrink-0 flex items-center gap-1.5",
-                onClick: () => setEditingTemplate(t2),
-                "data-ocid": `drip-edit-button.${idx + 1}`,
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { className: "w-3.5 h-3.5" }),
-                  "Edit"
-                ]
-              }
-            )
-          ] }) })
-        },
-        t2.id.toString()
-      );
-    }) }),
-    editingTemplate && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      DripEditModal,
-      {
-        template: editingTemplate,
-        onClose: () => setEditingTemplate(null),
-        onSaved: () => setEditingTemplate(null)
-      }
-    )
   ] });
 }
 function CustomChartTooltip({ active, payload, label }) {
@@ -22640,7 +22070,6 @@ function PaymentsPanel() {
 }
 function AdminDashboard() {
   const { data: adminPrincipal } = useAdminPrincipal();
-  const { data: signups = [] } = useEmailSignups();
   const { data: messages = [] } = useTickerMessages();
   const { data: stats = [] } = useGetAdminStats();
   const { data: payments = [] } = useGetPaymentLedger();
@@ -22653,16 +22082,12 @@ function AdminDashboard() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldCheck, { className: "w-6 h-6 text-primary" }),
           "Admin Panel"
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "Manage ticker messages, email subscribers, and view platform stats." })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm mt-1", children: "Manage ticker messages and view platform stats." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 flex-wrap", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-primary/10 rounded-lg px-4 py-2 text-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-2xl font-display font-bold text-primary", children: totalQrCodes.toLocaleString() }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "QR (30d)" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-primary/10 rounded-lg px-4 py-2 text-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-2xl font-display font-bold text-primary", children: signups.length }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Subscribers" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-primary/10 rounded-lg px-4 py-2 text-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-2xl font-display font-bold text-primary", children: [
@@ -22714,31 +22139,6 @@ function AdminDashboard() {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           TabsTrigger,
           {
-            value: "signups",
-            className: "flex items-center gap-1.5",
-            "data-ocid": "tab-signups",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "w-4 h-4" }),
-              "Email Signups"
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          TabsTrigger,
-          {
-            value: "broadcast",
-            className: "flex items-center gap-1.5",
-            "data-ocid": "tab-broadcast",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { className: "w-4 h-4" }),
-              "Broadcast",
-              signups.length > 0 ? ` (${signups.length})` : ""
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          TabsTrigger,
-          {
             value: "payments",
             className: "flex items-center gap-1.5",
             "data-ocid": "tab-payments",
@@ -22747,31 +22147,15 @@ function AdminDashboard() {
               "Payments"
             ]
           }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          TabsTrigger,
-          {
-            value: "drip",
-            className: "flex items-center gap-1.5",
-            "data-ocid": "tab-drip",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Clock, { className: "w-4 h-4" }),
-              "Drip Emails"
-            ]
-          }
         )
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "stats", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(StatsPanel, {}) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "ticker", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TickerPanel, {}) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "signups", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(EmailSignupsPanel, {}) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "broadcast", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BroadcastPanel, { subscriberCount: signups.length }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "drip", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(DripEmailsPanel, {}) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(TabsContent, { value: "payments", className: "mt-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(PaymentsPanel, {}) })
     ] })
   ] });
 }
 function AdminPage() {
-  const { identity: identity3 } = useInternetIdentity();
   const { isAdmin } = useIsAdmin();
   const { data: adminPrincipal, isLoading: adminLoading } = useAdminPrincipal();
   if (adminLoading) {
@@ -22781,13 +22165,7 @@ function AdminPage() {
     ] }) });
   }
   if (!adminPrincipal) {
-    if (!identity3) {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(LoginGate, {});
-    }
     return /* @__PURE__ */ jsxRuntimeExports.jsx(ClaimAdminGate, { adminPrincipal: null });
-  }
-  if (!identity3) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(LoginGate, {});
   }
   if (!isAdmin) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx(ClaimAdminGate, { adminPrincipal });

@@ -4,25 +4,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
-import { useInternetIdentity } from "@caffeineai/core-infrastructure";
 import {
   AlertCircle,
   BarChart2,
-  CheckCircle2,
-  Clock,
   CreditCard,
-  Loader2,
-  Mail,
   MessageSquare,
   Pencil,
   Plus,
-  Send,
   ShieldAlert,
   ShieldCheck,
   Trash2,
-  X,
-  XCircle,
 } from "lucide-react";
 import { useState } from "react";
 import {
@@ -39,55 +30,18 @@ import {
   type PaymentRecord,
   useAddTickerMessage,
   useAdminPrincipal,
-  useBroadcastToSubscribers,
   useClaimAdmin,
   useDeleteTickerMessage,
-  useEmailSignups,
   useGetAdminStats,
-  useGetDripTemplates,
   useGetPaymentLedger,
-  useRemoveEmailSignup,
   useTickerMessages,
-  useUpdateDripTemplate,
   useUpdateTickerMessage,
 } from "../hooks/useBackend";
 import { useIsAdmin } from "../hooks/useIsAdmin";
-import type { DripTemplate, EmailSignup, TickerMessage } from "../types";
-import { toDate } from "../types";
+import type { TickerMessage } from "../types";
 
 const MAX_TICKER = 5;
 const MAX_TICKER_CHARS = 150;
-
-// ─── Not-Logged-In Gate ───────────────────────────────────────────────────────
-function LoginGate() {
-  const { login } = useInternetIdentity();
-  return (
-    <div className="flex-1 flex items-center justify-center py-24">
-      <Card className="max-w-sm w-full text-center shadow-lg border-border">
-        <CardContent className="pt-10 pb-10 flex flex-col items-center gap-5">
-          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-            <ShieldAlert className="w-7 h-7 text-primary" />
-          </div>
-          <div>
-            <h2 className="text-xl font-display font-bold text-foreground">
-              Admin Access Required
-            </h2>
-            <p className="text-muted-foreground text-sm mt-1">
-              Sign in with Internet Identity to continue.
-            </p>
-          </div>
-          <Button
-            className="w-full"
-            onClick={() => login()}
-            data-ocid="admin-login-btn"
-          >
-            Sign In
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
 
 // ─── Claim Admin Gate ─────────────────────────────────────────────────────────
 function ClaimAdminGate({ adminPrincipal }: { adminPrincipal: string | null }) {
@@ -341,587 +295,6 @@ function TickerPanel() {
             </Card>
           ))}
         </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Email Signups Panel ──────────────────────────────────────────────────────
-function EmailSignupsPanel() {
-  const { data: signups = [], isLoading } = useEmailSignups();
-  const removeSignup = useRemoveEmailSignup();
-  const [confirmEmail, setConfirmEmail] = useState<string | null>(null);
-
-  async function handleDelete(email: string) {
-    try {
-      await removeSignup.mutateAsync(email);
-      setConfirmEmail(null);
-      toast.success("Subscriber removed.");
-    } catch {
-      toast.error("Failed to remove subscriber.");
-    }
-  }
-
-  if (isLoading) {
-    return (
-      <div className="space-y-3">
-        <Skeleton className="h-10 w-full rounded-lg" />
-        {[1, 2, 3, 4].map((i) => (
-          <Skeleton key={i} className="h-12 w-full rounded-lg" />
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <Card className="border-border bg-card shadow-sm overflow-hidden">
-        <CardHeader className="bg-primary/5 border-b border-border pb-3">
-          <CardTitle className="text-base font-display font-semibold flex items-center gap-2">
-            <Mail className="w-4 h-4 text-primary" />
-            Email Subscribers
-            <Badge className="ml-auto bg-primary text-primary-foreground text-xs">
-              {signups.length}{" "}
-              {signups.length === 1 ? "subscriber" : "subscribers"}
-            </Badge>
-          </CardTitle>
-        </CardHeader>
-        {signups.length === 0 ? (
-          <CardContent className="py-16 flex flex-col items-center gap-3 text-muted-foreground">
-            <Mail className="w-10 h-10 opacity-30" />
-            <p className="text-sm" data-ocid="signups-empty-state">
-              No email signups yet.
-            </p>
-          </CardContent>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm" data-ocid="signups-table">
-              <thead>
-                <tr className="bg-primary/10 border-b border-border">
-                  <th className="text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide">
-                    First Name
-                  </th>
-                  <th className="text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide">
-                    Email Address
-                  </th>
-                  <th className="text-left px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide">
-                    Signed Up
-                  </th>
-                  <th className="text-right px-4 py-3 font-display font-semibold text-primary text-xs uppercase tracking-wide">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {signups.map((s: EmailSignup, idx: number) => (
-                  <tr
-                    key={s.email}
-                    className={idx % 2 === 0 ? "bg-card" : "bg-muted/30"}
-                    data-ocid={`signup-row-${idx + 1}`}
-                  >
-                    <td className="px-4 py-3 text-foreground text-xs font-medium">
-                      {s.firstName}
-                    </td>
-                    <td className="px-4 py-3 text-foreground font-mono text-xs">
-                      {s.email}
-                    </td>
-                    <td className="px-4 py-3 text-muted-foreground text-xs">
-                      {toDate(s.signedUpAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      {confirmEmail === s.email ? (
-                        <div className="flex items-center justify-end gap-2">
-                          <span className="text-xs text-muted-foreground">
-                            Remove?
-                          </span>
-                          <Button
-                            size="sm"
-                            variant="destructive"
-                            className="h-7 px-2 text-xs"
-                            onClick={() => handleDelete(s.email)}
-                            disabled={removeSignup.isPending}
-                            data-ocid={`signup-confirm-delete-${idx + 1}`}
-                          >
-                            Yes
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="h-7 px-2 text-xs"
-                            onClick={() => setConfirmEmail(null)}
-                            data-ocid={`signup-cancel-delete-${idx + 1}`}
-                          >
-                            Cancel
-                          </Button>
-                        </div>
-                      ) : (
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          className="h-7 w-7 text-muted-foreground hover:text-destructive"
-                          onClick={() => setConfirmEmail(s.email)}
-                          aria-label={`Remove ${s.email}`}
-                          data-ocid={`signup-delete-btn-${idx + 1}`}
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </Button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
-    </div>
-  );
-}
-
-// ─── Broadcast Panel ──────────────────────────────────────────────────────────
-function BroadcastPanel({ subscriberCount }: { subscriberCount: number }) {
-  const broadcast = useBroadcastToSubscribers();
-  const [subject, setSubject] = useState("");
-  const [body, setBody] = useState("");
-  const [result, setResult] = useState<
-    | { type: "success"; count: number }
-    | { type: "error"; message: string }
-    | null
-  >(null);
-
-  async function handleSend() {
-    if (!subject.trim() || !body.trim()) return;
-    setResult(null);
-    try {
-      const count = await broadcast.mutateAsync({
-        subject: subject.trim(),
-        body: body.trim(),
-      });
-      setResult({ type: "success", count });
-      setSubject("");
-      setBody("");
-      toast.success(
-        `Broadcast sent to ${count} subscriber${count === 1 ? "" : "s"}!`,
-      );
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Broadcast failed.";
-      setResult({ type: "error", message: msg });
-      toast.error(msg);
-    }
-  }
-
-  return (
-    <div className="space-y-6">
-      <Card className="border-border bg-card shadow-sm overflow-hidden">
-        <CardHeader className="bg-primary/5 border-b border-border pb-3">
-          <CardTitle className="text-base font-display font-semibold flex items-center gap-2">
-            <Send className="w-4 h-4 text-primary" />
-            Send to All Subscribers
-            <Badge className="ml-auto bg-primary text-primary-foreground text-xs">
-              {subscriberCount}{" "}
-              {subscriberCount === 1 ? "recipient" : "recipients"}
-            </Badge>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-5 space-y-4">
-          {subscriberCount === 0 && (
-            <div
-              className="flex items-center gap-2 rounded-lg bg-muted/50 border border-border px-4 py-3 text-sm text-muted-foreground"
-              data-ocid="broadcast-no-subscribers"
-            >
-              <Mail className="w-4 h-4 shrink-0" />
-              <span>
-                No subscribers yet. The form is ready for when people sign up.
-              </span>
-            </div>
-          )}
-
-          {/* Feedback banner */}
-          {result?.type === "success" && (
-            <div
-              className="flex items-center gap-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-400"
-              data-ocid="broadcast-success-state"
-            >
-              <CheckCircle2 className="w-4 h-4 shrink-0" />
-              <span>
-                Sent to <strong>{result.count}</strong> subscriber
-                {result.count === 1 ? "" : "s"}!
-              </span>
-            </div>
-          )}
-          {result?.type === "error" && (
-            <div
-              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/30 px-4 py-3 text-sm text-destructive"
-              data-ocid="broadcast-error-state"
-            >
-              <XCircle className="w-4 h-4 shrink-0" />
-              <span>{result.message}</span>
-            </div>
-          )}
-
-          {/* Subject */}
-          <div className="space-y-1.5">
-            <label
-              htmlFor="broadcast-subject"
-              className="text-xs font-medium text-foreground uppercase tracking-wide"
-            >
-              Subject
-            </label>
-            <Input
-              id="broadcast-subject"
-              placeholder="e.g. Welcome to QRGen updates!"
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-                setResult(null);
-              }}
-              disabled={broadcast.isPending}
-              data-ocid="broadcast-subject-input"
-            />
-          </div>
-
-          {/* Body */}
-          <div className="space-y-1.5">
-            <label
-              htmlFor="broadcast-body"
-              className="text-xs font-medium text-foreground uppercase tracking-wide"
-            >
-              Message
-            </label>
-            <Textarea
-              id="broadcast-body"
-              placeholder="Write your message to subscribers here…"
-              rows={6}
-              value={body}
-              onChange={(e) => {
-                setBody(e.target.value);
-                setResult(null);
-              }}
-              disabled={broadcast.isPending}
-              className="resize-y min-h-[96px]"
-              data-ocid="broadcast-body-textarea"
-            />
-          </div>
-
-          <Button
-            onClick={handleSend}
-            disabled={
-              broadcast.isPending ||
-              !subject.trim() ||
-              !body.trim() ||
-              subscriberCount === 0
-            }
-            className="w-full sm:w-auto"
-            data-ocid="broadcast-send-button"
-          >
-            {broadcast.isPending ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Sending…
-              </>
-            ) : (
-              <>
-                <Send className="w-4 h-4 mr-2" />
-                Send to All Subscribers
-              </>
-            )}
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-
-// ─── Drip Email Templates Panel ───────────────────────────────────────────────
-
-const DRIP_DELAY_LABELS: Record<number, string> = {
-  0: "Sent immediately",
-  10: "Sent 10 days after signup",
-  30: "Sent 30 days after signup",
-  40: "Sent 40 days after signup",
-};
-
-interface EditModalProps {
-  template: DripTemplate;
-  onClose: () => void;
-  onSaved: () => void;
-}
-
-function DripEditModal({ template, onClose, onSaved }: EditModalProps) {
-  const updateTemplate = useUpdateDripTemplate();
-  const [subject, setSubject] = useState(template.subject);
-  const [htmlBody, setHtmlBody] = useState(template.htmlBody);
-  const [saveResult, setSaveResult] = useState<
-    { type: "success" } | { type: "error"; message: string } | null
-  >(null);
-
-  async function handleSave() {
-    if (!subject.trim() || !htmlBody.trim()) return;
-    setSaveResult(null);
-    try {
-      await updateTemplate.mutateAsync({
-        id: template.id,
-        subject: subject.trim(),
-        htmlBody: htmlBody.trim(),
-      });
-      setSaveResult({ type: "success" });
-      toast.success("Template saved.");
-      onSaved();
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Failed to save.";
-      setSaveResult({ type: "error", message: msg });
-      toast.error(msg);
-    }
-  }
-
-  const delayLabel =
-    DRIP_DELAY_LABELS[Number(template.delayDays)] ??
-    `Sent ${template.delayDays} days after signup`;
-
-  return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-    <dialog
-      open
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4 m-0 max-w-none max-h-none w-full h-full border-0 bg-transparent"
-      data-ocid="drip-edit-dialog"
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-      onKeyDown={(e) => e.key === "Escape" && onClose()}
-    >
-      <div className="bg-card border border-border rounded-xl shadow-xl w-full max-w-lg flex flex-col gap-0 overflow-hidden">
-        {/* Header */}
-        <div className="flex items-center gap-3 bg-primary/5 border-b border-border px-5 py-4">
-          <div className="flex-1 min-w-0">
-            <h2 className="font-display font-bold text-foreground text-base truncate">
-              Edit — {template.name}
-            </h2>
-            <p className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
-              <Clock className="w-3 h-3" />
-              {delayLabel} &nbsp;·&nbsp; v{template.version.toString()}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="h-8 w-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
-            aria-label="Close"
-            data-ocid="drip-edit-close-button"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Body */}
-        <div className="px-5 py-5 space-y-4 overflow-y-auto max-h-[60vh]">
-          {/* Feedback */}
-          {saveResult?.type === "success" && (
-            <div
-              className="flex items-center gap-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-3 py-2.5 text-sm text-emerald-700 dark:text-emerald-400"
-              data-ocid="drip-edit-success-state"
-            >
-              <CheckCircle2 className="w-4 h-4 shrink-0" />
-              <span>Template saved! Changes apply to future subscribers.</span>
-            </div>
-          )}
-          {saveResult?.type === "error" && (
-            <div
-              className="flex items-center gap-2 rounded-lg bg-destructive/10 border border-destructive/30 px-3 py-2.5 text-sm text-destructive"
-              data-ocid="drip-edit-error-state"
-            >
-              <XCircle className="w-4 h-4 shrink-0" />
-              <span>{saveResult.message}</span>
-            </div>
-          )}
-
-          {/* Subject */}
-          <div className="space-y-1.5">
-            <label
-              htmlFor="drip-subject"
-              className="text-xs font-medium text-foreground uppercase tracking-wide"
-            >
-              Subject
-            </label>
-            <input
-              id="drip-subject"
-              type="text"
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Email subject line…"
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-                setSaveResult(null);
-              }}
-              disabled={updateTemplate.isPending}
-              data-ocid="drip-subject-input"
-            />
-          </div>
-
-          {/* HTML Body */}
-          <div className="space-y-1.5">
-            <label
-              htmlFor="drip-htmlbody"
-              className="text-xs font-medium text-foreground uppercase tracking-wide"
-            >
-              HTML Body
-            </label>
-            <Textarea
-              id="drip-htmlbody"
-              rows={10}
-              className="resize-y min-h-[160px] font-mono text-xs"
-              placeholder="Write your HTML email body here…"
-              value={htmlBody}
-              onChange={(e) => {
-                setHtmlBody(e.target.value);
-                setSaveResult(null);
-              }}
-              disabled={updateTemplate.isPending}
-              data-ocid="drip-htmlbody-textarea"
-            />
-            <p className="text-xs text-muted-foreground">
-              Supported placeholders:{" "}
-              <code className="bg-muted px-1 py-0.5 rounded text-xs font-mono">
-                {"{{firstName}}"}
-              </code>{" "}
-              and{" "}
-              <code className="bg-muted px-1 py-0.5 rounded text-xs font-mono">
-                {"{{UNSUBSCRIBE_URL}}"}
-              </code>{" "}
-              (required).
-            </p>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-end gap-2 px-5 py-4 bg-muted/30 border-t border-border">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onClose}
-            data-ocid="drip-edit-cancel-button"
-          >
-            Cancel
-          </Button>
-          <Button
-            size="sm"
-            onClick={handleSave}
-            disabled={
-              updateTemplate.isPending || !subject.trim() || !htmlBody.trim()
-            }
-            data-ocid="drip-edit-save-button"
-          >
-            {updateTemplate.isPending ? (
-              <>
-                <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
-                Saving…
-              </>
-            ) : (
-              "Save Changes"
-            )}
-          </Button>
-        </div>
-      </div>
-    </dialog>
-  );
-}
-
-function DripEmailsPanel() {
-  const { data: templates = [], isLoading } = useGetDripTemplates();
-  const [editingTemplate, setEditingTemplate] = useState<DripTemplate | null>(
-    null,
-  );
-
-  if (isLoading) {
-    return (
-      <div className="space-y-3">
-        {[1, 2, 3, 4].map((i) => (
-          <Skeleton key={i} className="h-20 w-full rounded-lg" />
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="flex items-start gap-3 rounded-lg bg-primary/5 border border-primary/20 px-4 py-3">
-        <Mail className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-        <p className="text-xs text-muted-foreground leading-relaxed">
-          These templates are sent automatically at the scheduled delay. Edits
-          apply only to future subscribers — existing subscribers receive the
-          version that was active when they signed up.
-        </p>
-      </div>
-
-      {templates.length === 0 ? (
-        <div
-          className="flex flex-col items-center justify-center py-16 gap-3 text-muted-foreground"
-          data-ocid="drip-empty-state"
-        >
-          <Mail className="w-10 h-10 opacity-30" />
-          <p className="text-sm">No drip templates found.</p>
-        </div>
-      ) : (
-        <div className="space-y-3" data-ocid="drip-templates-list">
-          {templates.map((t, idx) => {
-            const delayLabel =
-              DRIP_DELAY_LABELS[Number(t.delayDays)] ??
-              `Sent ${t.delayDays} days after signup`;
-            return (
-              <Card
-                key={t.id.toString()}
-                className="border-border bg-card shadow-sm"
-                data-ocid={`drip-template-item.${idx + 1}`}
-              >
-                <CardContent className="py-4 px-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 min-w-0 space-y-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-display font-semibold text-foreground text-sm">
-                          {t.name}
-                        </span>
-                        <Badge
-                          variant="outline"
-                          className="text-xs shrink-0"
-                          data-ocid={`drip-version-badge.${idx + 1}`}
-                        >
-                          v{t.version.toString()}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Clock className="w-3 h-3 shrink-0" />
-                        {delayLabel}
-                      </p>
-                      <p className="text-xs text-foreground/70 truncate">
-                        Subject:{" "}
-                        <span className="text-foreground">{t.subject}</span>
-                      </p>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="shrink-0 flex items-center gap-1.5"
-                      onClick={() => setEditingTemplate(t)}
-                      data-ocid={`drip-edit-button.${idx + 1}`}
-                    >
-                      <Pencil className="w-3.5 h-3.5" />
-                      Edit
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      )}
-
-      {editingTemplate && (
-        <DripEditModal
-          template={editingTemplate}
-          onClose={() => setEditingTemplate(null)}
-          onSaved={() => setEditingTemplate(null)}
-        />
       )}
     </div>
   );
@@ -1232,7 +605,6 @@ function PaymentsPanel() {
 // ─── Admin Dashboard ──────────────────────────────────────────────────────────
 function AdminDashboard() {
   const { data: adminPrincipal } = useAdminPrincipal();
-  const { data: signups = [] } = useEmailSignups();
   const { data: messages = [] } = useTickerMessages();
   const { data: stats = [] } = useGetAdminStats();
   const { data: payments = [] } = useGetPaymentLedger();
@@ -1250,7 +622,7 @@ function AdminDashboard() {
             Admin Panel
           </h1>
           <p className="text-muted-foreground text-sm mt-1">
-            Manage ticker messages, email subscribers, and view platform stats.
+            Manage ticker messages and view platform stats.
           </p>
         </div>
         <div className="flex gap-3 flex-wrap">
@@ -1259,12 +631,6 @@ function AdminDashboard() {
               {totalQrCodes.toLocaleString()}
             </p>
             <p className="text-xs text-muted-foreground">QR (30d)</p>
-          </div>
-          <div className="bg-primary/10 rounded-lg px-4 py-2 text-center">
-            <p className="text-2xl font-display font-bold text-primary">
-              {signups.length}
-            </p>
-            <p className="text-xs text-muted-foreground">Subscribers</p>
           </div>
           <div className="bg-primary/10 rounded-lg px-4 py-2 text-center">
             <p className="text-2xl font-display font-bold text-primary">
@@ -1309,22 +675,6 @@ function AdminDashboard() {
             Ticker Messages
           </TabsTrigger>
           <TabsTrigger
-            value="signups"
-            className="flex items-center gap-1.5"
-            data-ocid="tab-signups"
-          >
-            <Mail className="w-4 h-4" />
-            Email Signups
-          </TabsTrigger>
-          <TabsTrigger
-            value="broadcast"
-            className="flex items-center gap-1.5"
-            data-ocid="tab-broadcast"
-          >
-            <Send className="w-4 h-4" />
-            Broadcast{signups.length > 0 ? ` (${signups.length})` : ""}
-          </TabsTrigger>
-          <TabsTrigger
             value="payments"
             className="flex items-center gap-1.5"
             data-ocid="tab-payments"
@@ -1332,29 +682,12 @@ function AdminDashboard() {
             <CreditCard className="w-4 h-4" />
             Payments
           </TabsTrigger>
-          <TabsTrigger
-            value="drip"
-            className="flex items-center gap-1.5"
-            data-ocid="tab-drip"
-          >
-            <Clock className="w-4 h-4" />
-            Drip Emails
-          </TabsTrigger>
         </TabsList>
         <TabsContent value="stats" className="mt-6">
           <StatsPanel />
         </TabsContent>
         <TabsContent value="ticker" className="mt-6">
           <TickerPanel />
-        </TabsContent>
-        <TabsContent value="signups" className="mt-6">
-          <EmailSignupsPanel />
-        </TabsContent>
-        <TabsContent value="broadcast" className="mt-6">
-          <BroadcastPanel subscriberCount={signups.length} />
-        </TabsContent>
-        <TabsContent value="drip" className="mt-6">
-          <DripEmailsPanel />
         </TabsContent>
         <TabsContent value="payments" className="mt-6">
           <PaymentsPanel />
@@ -1366,12 +699,9 @@ function AdminDashboard() {
 
 // ─── Page Entry Point ─────────────────────────────────────────────────────────
 export function AdminPage() {
-  const { identity } = useInternetIdentity();
   const { isAdmin } = useIsAdmin();
   const { data: adminPrincipal, isLoading: adminLoading } = useAdminPrincipal();
 
-  // Only block rendering while the adminPrincipal query is in-flight.
-  // Do NOT block on isInitializing — identity state is irrelevant to showing ClaimAdminGate.
   if (adminLoading) {
     return (
       <div className="flex-1 flex items-center justify-center py-24">
@@ -1383,18 +713,8 @@ export function AdminPage() {
     );
   }
 
-  // No admin claimed yet — show Claim gate regardless of sign-in state.
-  // LoginGate is shown inside ClaimAdminGate if identity is missing.
   if (!adminPrincipal) {
-    if (!identity) {
-      return <LoginGate />;
-    }
     return <ClaimAdminGate adminPrincipal={null} />;
-  }
-
-  // Admin is set. Check if this user is the admin.
-  if (!identity) {
-    return <LoginGate />;
   }
 
   if (!isAdmin) {

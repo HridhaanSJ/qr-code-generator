@@ -3,11 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useInternetIdentity } from "@caffeineai/core-infrastructure";
 import { useSearch } from "@tanstack/react-router";
 import {
   AlertCircle,
-  Bell,
   BookmarkIcon,
   CheckCircle2,
   ChevronDown,
@@ -15,8 +13,6 @@ import {
   Download,
   ImageIcon,
   Link2,
-  Lock,
-  LogIn,
   Palette,
   QrCode,
   Save,
@@ -33,7 +29,6 @@ import {
   useGetStylePresets,
   useSaveQrEntry,
   useSaveStylePreset,
-  useSignUpForEmail,
 } from "../hooks/useBackend";
 
 const URL_REGEX = /^https?:\/\/.+/i;
@@ -156,9 +151,6 @@ interface GeneratorSearch {
 }
 
 export function GeneratorPage() {
-  const { identity, login, isLoggingIn } = useInternetIdentity();
-  const isLoggedIn = !!identity;
-
   // Read URL search params to pre-populate from a shared link
   const search = useSearch({ strict: false }) as GeneratorSearch;
 
@@ -166,11 +158,6 @@ export function GeneratorPage() {
   const [activeUrl, setActiveUrl] = useState("");
   const [urlError, setUrlError] = useState("");
   const [notes, setNotes] = useState("");
-  const [firstNameInput, setFirstNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
-  const [emailSuccess, setEmailSuccess] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
   // Customization state — pre-populate from share params
@@ -189,7 +176,6 @@ export function GeneratorPage() {
   const saveQr = useSaveQrEntry();
   const savePreset = useSaveStylePreset();
   const deletePreset = useDeleteStylePreset();
-  const signUpForEmail = useSignUpForEmail();
   const { data: presets = [] } = useGetStylePresets();
 
   const qrRef = useRef<HTMLDivElement>(null);
@@ -267,7 +253,7 @@ export function GeneratorPage() {
   }
 
   async function handleSave() {
-    if (!activeUrl || !isLoggedIn) return;
+    if (!activeUrl) return;
     // Wait for canvas to re-render with latest colors/logo before capturing
     await waitForRender();
     const qrCanvas = qrRef.current?.querySelector("canvas");
@@ -339,43 +325,6 @@ export function GeneratorPage() {
       setTimeout(() => setShareCopied(false), 2000);
     } catch {
       toast.error("Could not copy to clipboard.");
-    }
-  }
-
-  async function handleEmailSubscribe() {
-    let valid = true;
-    if (!firstNameInput.trim()) {
-      setFirstNameError("First name is required.");
-      valid = false;
-    } else {
-      setFirstNameError("");
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailInput.trim() || !emailRegex.test(emailInput)) {
-      setEmailError("Please enter a valid email address.");
-      valid = false;
-    } else {
-      setEmailError("");
-    }
-    if (!valid) return;
-
-    try {
-      const result = await signUpForEmail.mutateAsync({
-        firstName: firstNameInput.trim(),
-        email: emailInput.trim(),
-      });
-      // Backend returns Bool: false means duplicate
-      if (result === false) {
-        setEmailError("This email is already subscribed.");
-        return;
-      }
-      setEmailSuccess(true);
-      setFirstNameInput("");
-      setEmailInput("");
-      setFirstNameError("");
-      setEmailError("");
-    } catch {
-      setEmailError("Something went wrong. Please try again.");
     }
   }
 
@@ -626,101 +575,90 @@ export function GeneratorPage() {
                         My Presets
                       </p>
 
-                      {isLoggedIn ? (
-                        <>
-                          {/* Save preset row */}
-                          <div className="flex gap-2">
-                            <Input
-                              value={presetName}
-                              onChange={(e) =>
-                                setPresetName(e.target.value.slice(0, 50))
-                              }
-                              placeholder="Preset name…"
-                              className="flex-1 h-8 text-xs"
-                              maxLength={50}
-                              data-ocid="preset-name-input"
-                            />
-                            <Button
-                              type="button"
-                              size="sm"
-                              variant="outline"
-                              className="h-8 shrink-0 font-display text-xs"
-                              onClick={handleSavePreset}
-                              disabled={
-                                savePreset.isPending || !presetName.trim()
-                              }
-                              data-ocid="save-preset-btn"
-                            >
-                              <Save className="h-3.5 w-3.5 mr-1" />
-                              Save
-                            </Button>
-                          </div>
+                      <>
+                        {/* Save preset row */}
+                        <div className="flex gap-2">
+                          <Input
+                            value={presetName}
+                            onChange={(e) =>
+                              setPresetName(e.target.value.slice(0, 50))
+                            }
+                            placeholder="Preset name…"
+                            className="flex-1 h-8 text-xs"
+                            maxLength={50}
+                            data-ocid="preset-name-input"
+                          />
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            className="h-8 shrink-0 font-display text-xs"
+                            onClick={handleSavePreset}
+                            disabled={
+                              savePreset.isPending || !presetName.trim()
+                            }
+                            data-ocid="save-preset-btn"
+                          >
+                            <Save className="h-3.5 w-3.5 mr-1" />
+                            Save
+                          </Button>
+                        </div>
 
-                          {/* Saved presets list */}
-                          {presets.length > 0 ? (
-                            <ul className="space-y-1" data-ocid="presets-list">
-                              {presets.map((preset) => (
-                                <li
-                                  key={String(preset.id)}
-                                  className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5"
+                        {/* Saved presets list */}
+                        {presets.length > 0 ? (
+                          <ul className="space-y-1" data-ocid="presets-list">
+                            {presets.map((preset) => (
+                              <li
+                                key={String(preset.id)}
+                                className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5"
+                              >
+                                {/* Color swatches */}
+                                <div className="flex gap-1 shrink-0">
+                                  <span
+                                    className="h-4 w-4 rounded-sm border border-border"
+                                    style={{ background: preset.dotColor }}
+                                    title={`Dot: ${preset.dotColor}`}
+                                  />
+                                  <span
+                                    className="h-4 w-4 rounded-sm border border-border"
+                                    style={{ background: preset.bgColor }}
+                                    title={`BG: ${preset.bgColor}`}
+                                  />
+                                </div>
+                                <span className="flex-1 text-xs text-foreground truncate min-w-0">
+                                  {preset.name}
+                                </span>
+                                <Button
+                                  type="button"
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 px-2 text-xs font-display"
+                                  onClick={() => handleLoadPreset(preset)}
+                                  data-ocid={`load-preset-${preset.id}`}
                                 >
-                                  {/* Color swatches */}
-                                  <div className="flex gap-1 shrink-0">
-                                    <span
-                                      className="h-4 w-4 rounded-sm border border-border"
-                                      style={{ background: preset.dotColor }}
-                                      title={`Dot: ${preset.dotColor}`}
-                                    />
-                                    <span
-                                      className="h-4 w-4 rounded-sm border border-border"
-                                      style={{ background: preset.bgColor }}
-                                      title={`BG: ${preset.bgColor}`}
-                                    />
-                                  </div>
-                                  <span className="flex-1 text-xs text-foreground truncate min-w-0">
-                                    {preset.name}
-                                  </span>
-                                  <Button
-                                    type="button"
-                                    size="sm"
-                                    variant="ghost"
-                                    className="h-6 px-2 text-xs font-display"
-                                    onClick={() => handleLoadPreset(preset)}
-                                    data-ocid={`load-preset-${preset.id}`}
-                                  >
-                                    Load
-                                  </Button>
-                                  <button
-                                    type="button"
-                                    onClick={() =>
-                                      handleDeletePreset(preset.id)
-                                    }
-                                    className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
-                                    aria-label={`Delete preset ${preset.name}`}
-                                    data-ocid={`delete-preset-${preset.id}`}
-                                  >
-                                    <Trash2 className="h-3.5 w-3.5" />
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <p
-                              className="text-xs text-muted-foreground italic"
-                              data-ocid="presets-empty"
-                            >
-                              No presets yet. Save your current style above.
-                            </p>
-                          )}
-                        </>
-                      ) : (
-                        <p
-                          className="text-xs text-muted-foreground italic"
-                          data-ocid="presets-sign-in-note"
-                        >
-                          Sign in to save presets.
-                        </p>
-                      )}
+                                  Load
+                                </Button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeletePreset(preset.id)}
+                                  className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
+                                  aria-label={`Delete preset ${preset.name}`}
+                                  data-ocid={`delete-preset-${preset.id}`}
+                                >
+                                  <Trash2 className="h-3.5 w-3.5" />
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p
+                            className="text-xs text-muted-foreground italic"
+                            data-ocid="presets-empty"
+                          >
+                            No presets yet. Save your current style above.
+                          </p>
+                        )}
+                      </>
                     </div>
                   </div>
                 )}
@@ -768,79 +706,52 @@ export function GeneratorPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {!isLoggedIn ? (
-                    <div
-                      className="rounded-lg bg-muted/50 border border-border p-4 text-center space-y-3"
-                      data-ocid="login-prompt"
+                  <div className="space-y-1.5">
+                    <Label
+                      htmlFor="notes-input"
+                      className="text-sm font-medium font-display flex justify-between"
                     >
-                      <Lock className="h-8 w-8 text-muted-foreground mx-auto" />
-                      <p className="text-sm text-muted-foreground">
-                        Sign in with Internet Identity to save your QR codes to
-                        your personal profile.
-                      </p>
-                      <Button
-                        onClick={login}
-                        disabled={isLoggingIn}
-                        size="sm"
-                        className="font-display font-semibold"
-                        data-ocid="prompt-login-btn"
+                      <span>Notes</span>
+                      <span
+                        className={`text-xs tabular-nums ${notes.length > 28 ? "text-destructive" : "text-muted-foreground"}`}
                       >
-                        <LogIn className="h-4 w-4 mr-2" />
-                        {isLoggingIn ? "Signing in…" : "Sign In to Save"}
-                      </Button>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="space-y-1.5">
-                        <Label
-                          htmlFor="notes-input"
-                          className="text-sm font-medium font-display flex justify-between"
-                        >
-                          <span>Notes</span>
-                          <span
-                            className={`text-xs tabular-nums ${notes.length > 28 ? "text-destructive" : "text-muted-foreground"}`}
-                          >
-                            {notes.length}/30
-                          </span>
-                        </Label>
-                        <Textarea
-                          id="notes-input"
-                          value={notes}
-                          onChange={(e) =>
-                            setNotes(e.target.value.slice(0, 30))
-                          }
-                          placeholder="Optional note (e.g. Summer Campaign)"
-                          maxLength={30}
-                          rows={2}
-                          className="resize-none text-sm"
-                          data-ocid="notes-input"
-                        />
-                      </div>
-                      <Button
-                        onClick={handleSave}
-                        disabled={saveQr.isPending || isSaved}
-                        className="w-full font-display font-semibold"
-                        data-ocid="save-btn"
-                      >
-                        {isSaved ? (
-                          <>
-                            <CheckCircle2 className="h-4 w-4 mr-2" />
-                            Saved!
-                          </>
-                        ) : saveQr.isPending ? (
-                          <>
-                            <div className="h-4 w-4 mr-2 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
-                            Saving…
-                          </>
-                        ) : (
-                          <>
-                            <Save className="h-4 w-4 mr-2" />
-                            Save QR Code
-                          </>
-                        )}
-                      </Button>
-                    </>
-                  )}
+                        {notes.length}/30
+                      </span>
+                    </Label>
+                    <Textarea
+                      id="notes-input"
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value.slice(0, 30))}
+                      placeholder="Optional note (e.g. Summer Campaign)"
+                      maxLength={30}
+                      rows={2}
+                      className="resize-none text-sm"
+                      data-ocid="notes-input"
+                    />
+                  </div>
+                  <Button
+                    onClick={handleSave}
+                    disabled={saveQr.isPending || isSaved}
+                    className="w-full font-display font-semibold"
+                    data-ocid="save-btn"
+                  >
+                    {isSaved ? (
+                      <>
+                        <CheckCircle2 className="h-4 w-4 mr-2" />
+                        Saved!
+                      </>
+                    ) : saveQr.isPending ? (
+                      <>
+                        <div className="h-4 w-4 mr-2 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                        Saving…
+                      </>
+                    ) : (
+                      <>
+                        <Save className="h-4 w-4 mr-2" />
+                        Save QR Code
+                      </>
+                    )}
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -864,128 +775,6 @@ export function GeneratorPage() {
           </div>
         </section>
       )}
-
-      {/* ── Email Subscription ──────────────────────────────── */}
-      <section className="bg-background py-6 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="border border-border shadow-sm max-w-md">
-            <CardHeader className="pb-3">
-              <CardTitle className="font-display text-base flex items-center gap-2">
-                <Bell className="h-4 w-4 text-primary" />
-                Email Updates
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <p className="text-xs text-muted-foreground">
-                Subscribe for usage reports, QR code analytics, and product
-                updates.
-              </p>
-              {emailSuccess ? (
-                <div
-                  className="flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-3 py-2 text-sm text-primary font-medium"
-                  data-ocid="email-success-state"
-                >
-                  <CheckCircle2 className="h-4 w-4 shrink-0" />
-                  You are subscribed!
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <div className="space-y-1">
-                    <Label
-                      htmlFor="first-name-input"
-                      className="text-xs font-medium font-display"
-                    >
-                      First Name
-                    </Label>
-                    <Input
-                      id="first-name-input"
-                      type="text"
-                      value={firstNameInput}
-                      onChange={(e) => {
-                        setFirstNameInput(e.target.value);
-                        if (firstNameError) setFirstNameError("");
-                      }}
-                      onBlur={() => {
-                        if (!firstNameInput.trim())
-                          setFirstNameError("First name is required.");
-                        else setFirstNameError("");
-                      }}
-                      placeholder="Jane"
-                      className="h-9 text-sm"
-                      aria-invalid={!!firstNameError}
-                      data-ocid="first-name-input"
-                    />
-                    {firstNameError && (
-                      <p
-                        className="flex items-center gap-1 text-destructive text-xs"
-                        data-ocid="first-name-field-error"
-                      >
-                        <AlertCircle className="h-3 w-3 shrink-0" />
-                        {firstNameError}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-1">
-                    <Label
-                      htmlFor="email-input"
-                      className="text-xs font-medium font-display"
-                    >
-                      Email Address
-                    </Label>
-                    <Input
-                      id="email-input"
-                      type="email"
-                      value={emailInput}
-                      onChange={(e) => {
-                        setEmailInput(e.target.value);
-                        if (emailError) setEmailError("");
-                      }}
-                      onBlur={() => {
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (emailInput && !emailRegex.test(emailInput))
-                          setEmailError("Please enter a valid email address.");
-                        else setEmailError("");
-                      }}
-                      placeholder="you@company.com"
-                      className="h-9 text-sm"
-                      aria-invalid={!!emailError}
-                      data-ocid="email-input"
-                    />
-                    {emailError && (
-                      <p
-                        className="flex items-center gap-1 text-destructive text-xs"
-                        data-ocid="email-field-error"
-                      >
-                        <AlertCircle className="h-3 w-3 shrink-0" />
-                        {emailError}
-                      </p>
-                    )}
-                  </div>
-                  <Button
-                    onClick={handleEmailSubscribe}
-                    disabled={signUpForEmail.isPending}
-                    variant="outline"
-                    className="w-full font-display font-semibold"
-                    data-ocid="email-subscribe-btn"
-                  >
-                    {signUpForEmail.isPending ? (
-                      <>
-                        <div className="h-4 w-4 mr-2 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                        Subscribing…
-                      </>
-                    ) : (
-                      <>
-                        <Bell className="h-4 w-4 mr-2" />
-                        Subscribe
-                      </>
-                    )}
-                  </Button>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      </section>
 
       {/* ── How it Works ───────────────────────────────────── */}
       <section className="bg-muted/30 border-t border-border py-10 px-4">

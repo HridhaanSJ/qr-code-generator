@@ -1,7 +1,7 @@
-import { c as createLucideIcon, u as useInternetIdentity, a as useSearch, r as reactExports, b as useSaveQrEntry, d as useSaveStylePreset, e as useDeleteStylePreset, f as useSignUpForEmail, g as useGetStylePresets, j as jsxRuntimeExports, B as Button, Q as QrCode, X, L as LogIn } from "./index-olMt066N.js";
-import { I as Input, C as Card, a as CardHeader, b as CardTitle, c as CardContent, T as Trash2, u as ue } from "./index-BMPdD8Rk.js";
-import { L as Label, Q as QRCodeCanvas, D as Download, S as Share2, a as Lock } from "./index-DXG_wgtH.js";
-import { C as CircleAlert, a as CircleCheck, T as Textarea } from "./textarea-uTn-pIXb.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, u as useSearch, r as reactExports, a as useSaveQrEntry, b as useSaveStylePreset, d as useDeleteStylePreset, e as useGetStylePresets, Q as QrCode, X } from "./index-DVsu3fCU.js";
+import { c as cn, I as Input, B as Button, C as Card, a as CardHeader, b as CardTitle, d as CardContent, T as Trash2, u as ue } from "./index-B9WKP9j2.js";
+import { L as Label, Q as QRCodeCanvas, D as Download, S as Share2 } from "./index-BQ0ttfLU.js";
+import { C as CircleAlert } from "./circle-alert-D5HGdMb-.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -9,42 +9,36 @@ import { C as CircleAlert, a as CircleCheck, T as Textarea } from "./textarea-uT
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
-  [
-    "path",
-    {
-      d: "M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326",
-      key: "11g9vi"
-    }
-  ]
-];
-const Bell = createLucideIcon("bell", __iconNode$8);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$7 = [
   ["path", { d: "m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z", key: "1fy3hk" }]
 ];
-const Bookmark = createLucideIcon("bookmark", __iconNode$7);
+const Bookmark = createLucideIcon("bookmark", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$6 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$6);
+const __iconNode$7 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$5 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$5);
+const __iconNode$6 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$6);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const CircleCheck = createLucideIcon("circle-check", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -127,6 +121,19 @@ const __iconNode = [
   ["path", { d: "M5 18H3", key: "zchphs" }]
 ];
 const Sparkles = createLucideIcon("sparkles", __iconNode);
+function Textarea({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "textarea",
+    {
+      "data-slot": "textarea",
+      className: cn(
+        "border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
+      ),
+      ...props
+    }
+  );
+}
 const URL_REGEX = /^https?:\/\/.+/i;
 const QR_SIZE = 220;
 const LOGO_SIZE = 48;
@@ -208,18 +215,11 @@ async function generateCompositeImage(url, qrCanvas) {
   return out.toDataURL("image/png");
 }
 function GeneratorPage() {
-  const { identity, login, isLoggingIn } = useInternetIdentity();
-  const isLoggedIn = !!identity;
   const search = useSearch({ strict: false });
   const [inputUrl, setInputUrl] = reactExports.useState(search.url ?? "");
   const [activeUrl, setActiveUrl] = reactExports.useState("");
   const [urlError, setUrlError] = reactExports.useState("");
   const [notes, setNotes] = reactExports.useState("");
-  const [firstNameInput, setFirstNameInput] = reactExports.useState("");
-  const [emailInput, setEmailInput] = reactExports.useState("");
-  const [emailError, setEmailError] = reactExports.useState("");
-  const [firstNameError, setFirstNameError] = reactExports.useState("");
-  const [emailSuccess, setEmailSuccess] = reactExports.useState(false);
   const [isSaved, setIsSaved] = reactExports.useState(false);
   const [dotColor, setDotColor] = reactExports.useState(search.dotColor ?? "#000000");
   const [bgColor, setBgColor] = reactExports.useState(search.bgColor ?? "#ffffff");
@@ -231,7 +231,6 @@ function GeneratorPage() {
   const saveQr = useSaveQrEntry();
   const savePreset = useSaveStylePreset();
   const deletePreset = useDeleteStylePreset();
-  const signUpForEmail = useSignUpForEmail();
   const { data: presets = [] } = useGetStylePresets();
   const qrRef = reactExports.useRef(null);
   const logoInputRef = reactExports.useRef(null);
@@ -302,7 +301,7 @@ function GeneratorPage() {
   }
   async function handleSave() {
     var _a;
-    if (!activeUrl || !isLoggedIn) return;
+    if (!activeUrl) return;
     await waitForRender();
     const qrCanvas = (_a = qrRef.current) == null ? void 0 : _a.querySelector("canvas");
     let compositeImageData;
@@ -365,40 +364,6 @@ function GeneratorPage() {
       setTimeout(() => setShareCopied(false), 2e3);
     } catch {
       ue.error("Could not copy to clipboard.");
-    }
-  }
-  async function handleEmailSubscribe() {
-    let valid = true;
-    if (!firstNameInput.trim()) {
-      setFirstNameError("First name is required.");
-      valid = false;
-    } else {
-      setFirstNameError("");
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailInput.trim() || !emailRegex.test(emailInput)) {
-      setEmailError("Please enter a valid email address.");
-      valid = false;
-    } else {
-      setEmailError("");
-    }
-    if (!valid) return;
-    try {
-      const result = await signUpForEmail.mutateAsync({
-        firstName: firstNameInput.trim(),
-        email: emailInput.trim()
-      });
-      if (result === false) {
-        setEmailError("This email is already subscribed.");
-        return;
-      }
-      setEmailSuccess(true);
-      setFirstNameInput("");
-      setEmailInput("");
-      setFirstNameError("");
-      setEmailError("");
-    } catch {
-      setEmailError("Something went wrong. Please try again.");
     }
   }
   function handleKeyDown(e) {
@@ -637,7 +602,7 @@ function GeneratorPage() {
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Bookmark, { className: "h-3.5 w-3.5 text-primary" }),
                 "My Presets"
               ] }),
-              isLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     Input,
@@ -725,14 +690,7 @@ function GeneratorPage() {
                     children: "No presets yet. Save your current style above."
                   }
                 )
-              ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "p",
-                {
-                  className: "text-xs text-muted-foreground italic",
-                  "data-ocid": "presets-sign-in-note",
-                  children: "Sign in to save presets."
-                }
-              )
+              ] })
             ] })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
@@ -773,31 +731,7 @@ function GeneratorPage() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(Save, { className: "h-4 w-4 text-primary" }),
           "Save to Profile"
         ] }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "space-y-4", children: !isLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
-          {
-            className: "rounded-lg bg-muted/50 border border-border p-4 text-center space-y-3",
-            "data-ocid": "login-prompt",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { className: "h-8 w-8 text-muted-foreground mx-auto" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Sign in with Internet Identity to save your QR codes to your personal profile." }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Button,
-                {
-                  onClick: login,
-                  disabled: isLoggingIn,
-                  size: "sm",
-                  className: "font-display font-semibold",
-                  "data-ocid": "prompt-login-btn",
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(LogIn, { className: "h-4 w-4 mr-2" }),
-                    isLoggingIn ? "Signing in…" : "Sign In to Save"
-                  ]
-                }
-              )
-            ]
-          }
-        ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               Label,
@@ -852,7 +786,7 @@ function GeneratorPage() {
               ] })
             }
           )
-        ] }) })
+        ] })
       ] }) })
     ] }) }) : (
       /* Empty state — prompt user */
@@ -867,129 +801,6 @@ function GeneratorPage() {
         ] })
       ] }) })
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "bg-background py-6 px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "border border-border shadow-sm max-w-md", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "pb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardTitle, { className: "font-display text-base flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Bell, { className: "h-4 w-4 text-primary" }),
-        "Email Updates"
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "space-y-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Subscribe for usage reports, QR code analytics, and product updates." }),
-        emailSuccess ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
-          {
-            className: "flex items-center gap-2 rounded-md bg-primary/10 border border-primary/20 px-3 py-2 text-sm text-primary font-medium",
-            "data-ocid": "email-success-state",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-4 w-4 shrink-0" }),
-              "You are subscribed!"
-            ]
-          }
-        ) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Label,
-              {
-                htmlFor: "first-name-input",
-                className: "text-xs font-medium font-display",
-                children: "First Name"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "first-name-input",
-                type: "text",
-                value: firstNameInput,
-                onChange: (e) => {
-                  setFirstNameInput(e.target.value);
-                  if (firstNameError) setFirstNameError("");
-                },
-                onBlur: () => {
-                  if (!firstNameInput.trim())
-                    setFirstNameError("First name is required.");
-                  else setFirstNameError("");
-                },
-                placeholder: "Jane",
-                className: "h-9 text-sm",
-                "aria-invalid": !!firstNameError,
-                "data-ocid": "first-name-input"
-              }
-            ),
-            firstNameError && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "p",
-              {
-                className: "flex items-center gap-1 text-destructive text-xs",
-                "data-ocid": "first-name-field-error",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "h-3 w-3 shrink-0" }),
-                  firstNameError
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Label,
-              {
-                htmlFor: "email-input",
-                className: "text-xs font-medium font-display",
-                children: "Email Address"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input,
-              {
-                id: "email-input",
-                type: "email",
-                value: emailInput,
-                onChange: (e) => {
-                  setEmailInput(e.target.value);
-                  if (emailError) setEmailError("");
-                },
-                onBlur: () => {
-                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                  if (emailInput && !emailRegex.test(emailInput))
-                    setEmailError("Please enter a valid email address.");
-                  else setEmailError("");
-                },
-                placeholder: "you@company.com",
-                className: "h-9 text-sm",
-                "aria-invalid": !!emailError,
-                "data-ocid": "email-input"
-              }
-            ),
-            emailError && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "p",
-              {
-                className: "flex items-center gap-1 text-destructive text-xs",
-                "data-ocid": "email-field-error",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "h-3 w-3 shrink-0" }),
-                  emailError
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              onClick: handleEmailSubscribe,
-              disabled: signUpForEmail.isPending,
-              variant: "outline",
-              className: "w-full font-display font-semibold",
-              "data-ocid": "email-subscribe-btn",
-              children: signUpForEmail.isPending ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-4 w-4 mr-2 border-2 border-primary border-t-transparent rounded-full animate-spin" }),
-                "Subscribing…"
-              ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Bell, { className: "h-4 w-4 mr-2" }),
-                "Subscribe"
-              ] })
-            }
-          )
-        ] })
-      ] })
-    ] }) }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "bg-muted/30 border-t border-border py-10 px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display font-bold text-lg text-foreground text-center mb-6", children: "How it works" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid sm:grid-cols-3 gap-4", children: STEPS.map((step) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
